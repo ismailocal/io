@@ -1,9 +1,8 @@
 "use strict";
 
-app
-    .service('console')
+io('console')
     .inject('config')
-    .define(function (config) {
+    .wait(function (config) {
 
         var self = {};
 
