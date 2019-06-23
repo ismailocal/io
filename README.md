@@ -1,4 +1,4 @@
-# io - mini javascript container
+# io.js - mini javascript container
 
 ## examples to use
 
