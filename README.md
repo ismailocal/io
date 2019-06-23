@@ -1,6 +1,6 @@
-# io - mini javascript container
+# io.js - mini javascript container
 
-## Examples to use
+## examples to use
 
 ```javascript
 io('config', {
