@@ -1,6 +1,6 @@
 # io.js - mini javascript container
 
-## examples to use
+## variable
 
 ```javascript
 io('config', {
@@ -9,19 +9,44 @@ io('config', {
 });
 ```
 
-### usage 1
+### module
+```javascript
+io('my-module', function () {
+        console.log('my-module');
+    })
+    .run();
+```
+or
+```javascript
+io('my-module').run(function () {
+    console.log('my-module');
+});
+```
+
+### module inject another module or variable
 ```javascript
 io('my-module', function (config) {
-            console.log(config.env);
-        })
-        .inject('config')
-        .run();
+        console.log(config.env);
+    })
+    .inject('config')
+    .run();
 ```
-### usage 2
+or
 ```javascript
 io('my-module')
-        .inject('config')
-        .run(function (config) {
+    .inject('config')
+    .run(function (config) {
+        console.log(config.env);
+    });
+```
+### use module another way
+```javascript
+io('my-module', function (config) {
+        this.log = function(){
             console.log(config.env);
-        });
+        }
+    })
+    .inject('config');
+
+io('my-module').log();
 ```
