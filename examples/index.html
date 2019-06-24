@@ -18,9 +18,14 @@
 
         io('my-module', function (config) {
             console.log(config.env);
+
+            this.test = function(){
+                console.log(config.url);
+            }
         })
-        .inject('config')
-        .run();
+        .inject('config');
+
+        io('my-module').test();
     </script>
 </body>
 

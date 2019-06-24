@@ -17,13 +17,18 @@ var io = (function () {
                 injects.push(self.modules[inject].object);
             }.bind(this));
 
-            self.modules[name].object = new (Function.prototype.bind.apply(self.modules[name].value, [null].concat(injects)));
+            return self.modules[name].object = new (Function.prototype.bind.apply(self.modules[name].value, [null].concat(injects)));
         } else {
             return self.modules[name].object = self.modules[name].value;
         }
     };
 
     return function (name, value) {
+
+        if (self.modules[name] && !value) {
+            return this.run(self.module.name);
+        }
+
         self.modules[self.module.name = name] = {
             injects: [],
             extends: [],
