@@ -16,16 +16,15 @@
             url: 'http://localhost/'
         });
 
-        io('my-module', function (config) {
+        io('my-module', function (config, config) {
             console.log(config.env);
 
             this.test = function(){
                 console.log(config.url);
             }
-        })
-        .inject('config');
+        });
 
-        io('my-module').test();
+        io('my-module');
     </script>
 </body>
 
